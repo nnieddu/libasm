@@ -4,17 +4,22 @@ section .text
 
 ft_write:
 	mov rax, 1
+    mov rdi, 1
 	syscall
-    test rax, rax
-    jnl .return
+    cmp rax, 0
+    jl  error
+    cmp rax, 0
+    jge exit
 
-    push r10
-    neg rax
-    mov r10, rax
+error:
     call __errno_location
-    mov dword [rax], r10d
-    mov rax, -1
-	pop r10
-
-.return:
 	ret
+    mov rax, 60
+    mov rdi, -1
+    syscall
+
+exit:
+	ret
+    mov rax, 60
+    mov rdi, 0
+    syscall

@@ -15,3 +15,6 @@ ft_strcpy_loop:
 exit:
 	mov		rax, rdi
 	ret
+    mov rax, 60
+    mov rdi, 0
+    syscall	

@@ -14,4 +14,10 @@ ft_strdup:
 	mov		rdi, rax	
 	mov		rsi, r8
 	call	ft_strcpy
+	jmp exit
+
+exit:
 	ret
+    mov rax, 60
+    mov rdi, 0
+    syscall

@@ -1,21 +1,28 @@
 section .text
     global ft_read
-    extern __errno_location
 
 ft_read:
-    mov rax, 0
-    syscall
-    test rax, rax
-    jnl .return
-
-    push r10
-    neg rax
-    mov r10, rax
-    call __errno_location
-    mov dword [rax], r10d
-    mov rax, -1
-	pop r10
-
-.return:
+	mov rax, 0
+	cmp rsi, 0
+	je ret_0
+	syscall
+	cmp rax, 0
+	jl err_call
+	jmp exit
+    
+err_call:
+	neg rax
+	mov r15, rax
+	call __errno_location
+	mov [rax], r15
+	mov rax, -1
 	ret
+ret_0:
+	mov rax, 0
+	jmp exit
 
+exit:
+	ret
+    mov rax, 60
+    mov rdi, 0
+    syscall

@@ -6,7 +6,7 @@
 #    By: ninieddu <ninieddu@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/22 17:11:32 by ninieddu          #+#    #+#              #
-#    Updated: 2020/10/28 19:38:47 by ninieddu         ###   ########lyon.fr    #
+#    Updated: 2020/10/29 15:56:09 by ninieddu         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME		=	libasm.a
 
 HEADER		=	libasm.h
 
-FLAGS		=	-f elf64
+FLAGS		=	-f elf64 -d ELF64
 
 RM			=	rm -rf
 
@@ -33,13 +33,13 @@ $(NAME): $(OBJ) $(HEADER)
 	nasm $(FLAGS) $< -o $@
 
 test:
-	gcc -Wall -Werror -Wextra -no-pie -o test main.c libasm.a
+	gcc -Wall -Werror -Wextra -o test main.c libasm.a
 
 clean:
 	${RM} ${OBJ}
 
 fclean: clean
-	${RM} ${NAME} ${TEST}
+	${RM} ${NAME} test
 	
 re: fclean all
 

@@ -27,12 +27,18 @@ ft_result_comput:
 
 ft_result0:
     mov     rax, 0
-    ret
+    jmp exit
 
 ft_result1:
     mov     rax, 1
-    ret
+    jmp exit
 
 ft_resultm1:
     mov     rax, -1
-    ret
+    jmp exit
+
+exit:
+	ret
+    mov rax, 60
+    mov rdi, 0
+    syscall

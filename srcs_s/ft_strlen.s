@@ -12,3 +12,6 @@ ft_strlen_loop:
 
 exit:
 	ret
+    mov rax, 60
+    mov rdi, 0
+    syscall

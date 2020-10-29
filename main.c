@@ -47,60 +47,56 @@ int		main(void)
 
 	printf("\n------------------------------------------------\n");
 	
-	#define BUF 32
 	int ret;
 	printf("\n[ft_write]\n\n");
-	dprintf(1, "\nft_write(1, \"truc\\n\", 5)\n");
 	errno = 0;
+	printf("\nft_write(1, \"truc\\n\", 5)\n");
 	ret = ft_write(1, "truc\n", 5);
-	dprintf(1, "ret = %d\n", ret);
-	dprintf(1, "errno = %d\n", errno);
-	dprintf(1, "\nft_write(1, \"aaaaaaaaaaaaa\\n\", 5)\n");
-	errno = 0;
+	printf( "ret = %d\n", ret);
+	printf("erno = %d\n", errno);
+	
+	printf( "\nft_write(1, \"aaaaaaaaaaaaa\\n\", 5)\n");
 	ret = ft_write(1, "aaaaaaaaaa   aaa\n", 17);
-	dprintf(1, "ret = %d\n", ret);
-	dprintf(1, "errno = %d\n", errno);
-	dprintf(1, "\nft_write(3, \"pouet\\n\", 5)\n");
-	errno = 0;
-	ret = ft_write(3, "pouet\n", 6);
-	dprintf(1, "ret = %d\n", ret);
-	dprintf(1, "errno = %d\n", errno);
-	dprintf(1, "\nwrite(3, \"pouet\\n\", 5)\n");
-	ret = write(3, "pouet\n", 6);
-	dprintf(1, "ret = %d\n", ret);
-	dprintf(1, "errno = %d\n", errno);
+	printf("ret = %d\n", ret);
+
+	printf("\nft_write(3, \"pouet\\n\", 5)\n");
+	ret = ft_write(1, "pouet\n", 6);
+	printf("ret = %d\n", ret);
 
 	printf("\n------------------------------------------------\n");
 
 	printf("\n[ft_read]\n\n");
 	int fd = open("test.txt", O_RDONLY);
-	char buf[BUF + 1];
+	char buf[32 + 1];
 	errno = 0;
-	while ((ret = ft_read(fd, buf, BUF)) > 0)
+	while ((ret = ft_read(fd, buf, 32)) > 0)
 	{
 		buf[ret] = 0;
-		dprintf(1, "%s\n", buf);
+		printf("%s\n", buf);
 	}
-	dprintf(1, "ret = %d\n", ret);
-	dprintf(1, "errno = %d\n", errno);
+	printf("ret = %d\n", ret);
+	printf("errno = %d\n\n", errno);
+	close(fd);
+
+	fd = open("test", O_RDONLY);
 	errno = 0;
-	while ((ret = ft_read(42, buf, BUF)) > 0)
+	while ((ret = ft_read(42, buf, 32)) > 0)
 	{
 		buf[ret] = 0;
 		printf("%s", buf);
 	}
-	dprintf(1, "ret = %d\n", ret);
-	dprintf(1, "errno = %d\n", errno);
+	printf("ret = %d\n", ret);
+	printf("errno = %d\n", errno);
 
 	printf("\n------------------------------------------------\n");
 
 	printf("[ft_strdup ASM]\n");
-	printf("%s\n", ft_strdup("test"));
+	printf("%s\n", ft_strdup("Test"));
 	printf("%s\n", ft_strdup("un autre"));
 	printf("%s\n", ft_strdup(""));
 	printf("%s\n", ft_strdup("un dernier apres le vide"));
 	printf("\n[strdup C]\n");
-	printf("%s\n", strdup("test"));
+	printf("%s\n", strdup("Test"));
 	printf("%s\n", strdup("un autre"));
 	printf("%s\n", strdup(""));
 	printf("%s\n", strdup("un dernier apres le vide"));
