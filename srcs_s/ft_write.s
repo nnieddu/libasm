@@ -4,19 +4,23 @@ section .text
 
 ft_write:
 	mov rax, 1
-    mov rdi, 1
+    cmp rdx, -1
+    jle  error2
 	syscall
-    cmp rax, 0
-    jl  error
-    cmp rax, 0
-    jge exit
+    cmp rax, -1
+    jle  error
+    jmp exit
+
+error2:
+    mov rax, -1
+    jmp exit
 
 error:
-    call __errno_location
-	ret
-    mov rax, 60
-    mov rdi, -1
-    syscall
+	neg rax
+	mov r15, rax
+	call __errno_location
+	mov [rax], r15
+	mov rax, -1
 
 exit:
 	ret

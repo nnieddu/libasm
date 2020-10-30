@@ -14,7 +14,6 @@ ft_strdup:
 	mov		rdi, rax	
 	mov		rsi, r8
 	call	ft_strcpy
-	jmp exit
 
 exit:
 	ret

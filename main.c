@@ -49,44 +49,45 @@ int		main(void)
 	
 	int ret;
 	printf("\n[ft_write]\n\n");
-	errno = 0;
-	printf("\nft_write(1, \"truc\\n\", 5)\n");
-	ret = ft_write(1, "truc\n", 5);
-	printf( "ret = %d\n", ret);
-	printf("erno = %d\n", errno);
+	printf("\nft_write(1, \"truc\", 5)\n");
+	ret = ft_write(1, "truc", -5);
+	printf( "\nret = %d\n", ret);
+	printf("errno = %d\n", errno);
+	printf("%s\n", strerror(errno));
 	
-	printf( "\nft_write(1, \"aaaaaaaaaaaaa\\n\", 5)\n");
-	ret = ft_write(1, "aaaaaaaaaa   aaa\n", 17);
-	printf("ret = %d\n", ret);
-
-	printf("\nft_write(3, \"pouet\\n\", 5)\n");
-	ret = ft_write(1, "pouet\n", 6);
-	printf("ret = %d\n", ret);
+	printf( "\nft_write(1, \"aaaaaaaaaaaaa\", 14)\n");
+	ret = ft_write(1, "aaaaaaaaaaaaa", 14);
+	printf("\nret = %d\n", ret);
+	printf("errno = %d\n", errno);
+	printf("%s\n", strerror(errno));
 
 	printf("\n------------------------------------------------\n");
 
 	printf("\n[ft_read]\n\n");
 	int fd = open("test.txt", O_RDONLY);
 	char buf[32 + 1];
-	errno = 0;
-	while ((ret = ft_read(fd, buf, 32)) > 0)
-	{
-		buf[ret] = 0;
-		printf("%s\n", buf);
-	}
-	printf("ret = %d\n", ret);
-	printf("errno = %d\n\n", errno);
+	ret = ft_read(fd, buf, 320);
+	printf("%s\n", buf);
 	close(fd);
-
-	fd = open("test", O_RDONLY);
-	errno = 0;
-	while ((ret = ft_read(42, buf, 32)) > 0)
-	{
-		buf[ret] = 0;
-		printf("%s", buf);
-	}
 	printf("ret = %d\n", ret);
 	printf("errno = %d\n", errno);
+	printf("%s\n\n", strerror(errno));
+
+	errno = 0;
+	memset(buf, 0, 32);
+	ret = read(0, buf, 32);
+	printf("%s\n", buf);
+	printf("ret = %d\n", ret);
+	printf("errno = %d\n", errno);
+	printf("%s\n", strerror(errno));
+
+	errno = 0;
+	memset(buf, 0, 32);
+	ret = ft_read(42, buf, 32);
+	printf("%s\n", buf);
+	printf("ret = %d\n", ret);
+	printf("errno = %d\n", errno);
+	printf("%s\n", strerror(errno));
 
 	printf("\n------------------------------------------------\n");
 

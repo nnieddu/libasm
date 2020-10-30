@@ -1,25 +1,22 @@
 section .text
     global ft_read
+	extern __errno_location
 
 ft_read:
 	mov rax, 0
 	cmp rsi, 0
-	je ret_0
+	je 	exit
 	syscall
 	cmp rax, 0
-	jl err_call
+	jl error
 	jmp exit
     
-err_call:
+error:
 	neg rax
 	mov r15, rax
 	call __errno_location
 	mov [rax], r15
 	mov rax, -1
-	ret
-ret_0:
-	mov rax, 0
-	jmp exit
 
 exit:
 	ret
