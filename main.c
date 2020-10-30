@@ -38,12 +38,18 @@ int		main(void)
 
 	printf("\n[ft_strcmp ASM]\n");
 	printf("%d\n", ft_strcmp("a", "aaaaaaaaaa"));
-	printf("%d\n", ft_strcmp("a", "a"));
+	printf("%d\n", ft_strcmp("a", "b"));
 	printf("%d\n", ft_strcmp("aaaaaaaaaa", "a"));
 	printf("\n\n[strcmp C]\n");
 	printf("%d\n", strcmp("a", "aaaaaaaaaa"));
-	printf("%d\n", strcmp("a", "a"));
+	printf("%d\n", strcmp("a", "b"));
 	printf("%d\n", strcmp("aaaaaaaaaa", "a"));
+
+	printf("\n------------------------------------------------\n");
+	printf("%d\n", ft_strcmp("\x02", "\x01"));
+	printf("%d\n", strcmp("\x02", "\x01"));
+	printf("%d\n", ft_strcmp("bonjour", "onjour"));
+	printf("%d\n", strcmp("bonjour", "onjour"));
 
 	printf("\n------------------------------------------------\n");
 	

@@ -4,8 +4,6 @@ section .text
 
 ft_read:
 	mov rax, 0
-	cmp rsi, 0
-	je 	exit
 	syscall
 	cmp rax, 0
 	jl error
@@ -13,9 +11,9 @@ ft_read:
     
 error:
 	neg rax
-	mov rbx, rax
+	mov r15, rax
 	call __errno_location
-	mov [rax], rbx
+	mov [rax], r15
 	mov rax, -1
 
 exit:
