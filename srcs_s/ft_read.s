@@ -13,9 +13,9 @@ ft_read:
     
 error:
 	neg rax
-	mov r15, rax
+	mov rbx, rax
 	call __errno_location
-	mov [rax], r15
+	mov [rax], rbx
 	mov rax, -1
 
 exit:

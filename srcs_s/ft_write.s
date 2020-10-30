@@ -4,22 +4,26 @@ section .text
 
 ft_write:
 	mov rax, 1
-    cmp rdx, -1
-    jle  error2
+    cmp edx, -1
+    jle  negativ_count
 	syscall
     cmp rax, -1
     jle  error
     jmp exit
 
-error2:
-    mov rax, -1
+negativ_count:
+    mov rax, 14
+    mov rbx, rax
+	call __errno_location
+	mov [rax], rbx
+	mov rax, -1
     jmp exit
 
 error:
 	neg rax
-	mov r15, rax
+	mov rbx, rax
 	call __errno_location
-	mov [rax], r15
+	mov [rax], rbx
 	mov rax, -1
 
 exit:
