@@ -3,31 +3,22 @@ section .text
 	extern __errno_location
 
 ft_write:
-	mov rax, 1
-    cmp edx, -1
-    jle  negativ_count
+	mov		rax, 1
 	syscall
-    cmp rax, -1
-    jle  error
-    jmp exit
+	cmp 	rax, 0
+	jl 		ft_error
+	jmp		exit
 
-negativ_count:
-    mov rax, 14
-    mov rbx, rax
-	call __errno_location
-	mov [rax], rbx
-	mov rax, -1
-    jmp exit
-
-error:
-	neg rax
-	mov rbx, rax
-	call __errno_location
-	mov [rax], rbx
-	mov rax, -1
+ft_error:
+	neg 	rax
+	mov 	rdx, rax
+	call	__errno_location
+	mov 	[rax], rdx
+	mov 	rax, -1
+	jmp		exit
 
 exit:
 	ret
     mov rax, 60
     mov rdi, 0
-    syscall
+    syscall	

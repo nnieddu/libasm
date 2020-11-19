@@ -40,30 +40,23 @@ int		main(void)
 	printf("%d\n", ft_strcmp("a", "aaaaaaaaaa"));
 	printf("%d\n", ft_strcmp("a", "b"));
 	printf("%d\n", ft_strcmp("aaaaaaaaaa", "a"));
+	printf("%d\n", ft_strcmp("a", "a"));
+	printf("%d\n", ft_strcmp("", ""));
+	
 	printf("\n\n[strcmp C]\n");
 	printf("%d\n", strcmp("a", "aaaaaaaaaa"));
 	printf("%d\n", strcmp("a", "b"));
 	printf("%d\n", strcmp("aaaaaaaaaa", "a"));
-
-	printf("\n------------------------------------------------\n");
-	printf("%d\n", ft_strcmp("\x02", "\x01"));
-	printf("%d\n", strcmp("\x02", "\x01"));
-	printf("%d\n", ft_strcmp("bonjour", "onjour"));
-	printf("%d\n", strcmp("bonjour", "onjour"));
+	printf("%d\n", strcmp("a", "a"));
+	printf("%d\n", strcmp("", ""));
 
 	printf("\n------------------------------------------------\n");
 	
-	int ret;
+	int ret = 0;
 	printf("\n[ft_write]\n\n");
-	printf("\nft_write(1, \"negative count\", -15)");
-	ret = ft_write(1, "negative count", -15);
-	printf( "\nret = %d\n", ret);
-	printf("errno = %d\n", errno);
-	printf("%s\n", strerror(errno));
-	errno = 0;
 	
-	printf("\nft_write(-1, \"file descriptore negatif\", 25)");
-	ret = ft_write(-1, "file descriptore negatif", 25);
+	printf("\nft_write(-1, \"file descriptor negatif\", 25)");
+	ret = ft_write(-1, "file descriptor negatif", 25);
 	printf( "\nret = %d\n", ret);
 	printf("errno = %d\n", errno);
 	printf("%s\n", strerror(errno));
@@ -76,17 +69,9 @@ int		main(void)
 	printf("%s\n", strerror(errno));
 	errno = 0;
 
-
-	printf("\n\n[Reel write]\n");
-	printf("\nwrite(1, \"negative count\", -15)");
-	ret = write(1, "negative count", -15);
-	printf( "\nret = %d\n", ret);
-	printf("errno = %d\n", errno);
-	printf("%s\n", strerror(errno));
-	errno = 0;
-
-	printf("\nwrite(-1, \"file descriptore negatif\", 25)");
-	ret = write(-1, "file descriptore negatif", 25);
+	printf("\n[reel write]\n\n");
+	printf("\nwrite(-1, \"file descriptor negatif\", 25)");
+	ret = write(-1, "file descriptor negatif", 25);
 	printf( "\nret = %d\n", ret);
 	printf("errno = %d\n", errno);
 	printf("%s\n", strerror(errno));
@@ -99,11 +84,13 @@ int		main(void)
 	printf("%s\n", strerror(errno));
 	errno = 0;
 
+
 	printf("\n------------------------------------------------\n");
 
 	printf("\n[ft_read]\n\n");
 	int fd = open("test.txt", O_RDONLY);
 	char buf[32 + 1];
+
 	ret = ft_read(fd, buf, 320);
 	printf("%s\n", buf);
 	close(fd);
@@ -127,6 +114,7 @@ int		main(void)
 	printf("ret = %d\n", ret);
 	printf("errno = %d\n", errno);
 	printf("%s\n", strerror(errno));
+
 
 	printf("\n------------------------------------------------\n");
 

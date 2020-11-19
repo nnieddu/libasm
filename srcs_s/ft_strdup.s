@@ -16,6 +16,6 @@ ft_strdup:
 
 exit:
 	ret
-    mov rax, 60
-    mov rdi, 0
+    mov 	rax, 60
+    mov 	rdi, 0
     syscall

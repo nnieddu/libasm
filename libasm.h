@@ -6,7 +6,7 @@
 /*   By: ninieddu <ninieddu@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 15:33:02 by ninieddu          #+#    #+#             */
-/*   Updated: 2020/10/29 10:14:07 by ninieddu         ###   ########lyon.fr   */
+/*   Updated: 2020/11/19 10:55:46 by ninieddu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #include <unistd.h>
 #include <string.h>
 
-int		ft_read(int fd, void *buf, int count);
-int		ft_write(int fd, const void *_buf, int nbytes);
+int		    ft_read(int fd, void *buf, int count);
+int		    ft_write(int fd, const void *_buf, int nbytes);
 size_t		ft_strlen(const char *s);
 int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strcpy(char *dest, const char *src);

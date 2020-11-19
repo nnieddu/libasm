@@ -1,50 +1,41 @@
 section .text
     global ft_strcmp
 
+
 ft_strcmp:
-	mov		rax, 0
-	mov 	rdx, 0
-	cmp		rdi, 0
-	je		return
-	cmp		rsi, 0
-	je		return
+	mov 	rax, 0
+	mov 	cx, 0
+	mov 	dx, 0
 
-while:
-	mov		bl, byte [rdi + rax]
-	cmp		byte [rsi + rax], bl
-	jne		return
-	cmp		bl, 0
-	je		return
-	cmp		byte [rsi + rax], 0
-	je		return
-	inc		rax
-	jmp		while
+ft_strcmp_loop:
+	mov 	cl, [rdi + rax]
+	mov 	dl, [rsi + rax]
+	cmp 	cl, 0
+	je		ft_ret
+	cmp 	dl, 0
+	je 		ft_ret
+	cmp 	cl, dl
+	jne 	ft_ret
+	inc 	rax	
+	jmp 	ft_strcmp_loop
 
-return:
-	mov		rdi, [rdi + rax]
-	and		rdi, 255
-	mov		rsi, [rsi + rax]
-	and		rsi, 255
-	mov		rax, rdi
-	sub		rax, rsi
-	cmp rax, 0
-    je ft_result0
-    cmp rax, 0
-    jg ft_result1
-    cmp rax, 0
-    jl ft_resultm1
+ft_ret:
+	cmp 	cx, dx
+	jl 		neg_ret
+	ja 		pos_ret
+	jmp 	eq_ret
 
-ft_result0:
-    mov     rax, 0
-    jmp exit
+neg_ret:
+	mov rax, -1
+	jmp exit
 
-ft_result1:
-    mov     rax, 1
-    jmp exit
+pos_ret:
+	mov rax, 1
+	jmp exit
 
-ft_resultm1:
-    mov     rax, -1
-    jmp exit
+eq_ret:
+	mov rax, 0
+	jmp exit
 
 exit:
 	ret

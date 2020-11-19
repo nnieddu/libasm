@@ -3,18 +3,19 @@ section .text
 	extern __errno_location
 
 ft_read:
-	mov rax, 0
+	mov 	rax, 0
 	syscall
-	cmp rax, 0
-	jl error
-	jmp exit
-    
-error:
-	neg rax
-	mov r15, rax
-	call __errno_location
-	mov [rax], r15
-	mov rax, -1
+	cmp 	rax, 0
+	jl 		ft_error
+	jmp		exit
+
+ft_error:
+	neg 	rax
+	mov 	rdx, rax
+	call 	__errno_location
+	mov 	[rax], rdx
+	mov 	rax, -1
+	ret
 
 exit:
 	ret
