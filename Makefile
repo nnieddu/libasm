@@ -6,7 +6,7 @@
 #    By: ninieddu <ninieddu@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/22 17:11:32 by ninieddu          #+#    #+#              #
-#    Updated: 2020/11/19 14:02:36 by ninieddu         ###   ########lyon.fr    #
+#    Updated: 2020/11/19 15:58:30 by ninieddu         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ HEADER		=	libasm.h
 
 CC			=	nasm
 
-FLAGS		=	-felf64
+FLAGS		=	-felf64 
 
 RM			=	rm -rf
 
@@ -36,7 +36,7 @@ $(NAME): $(OBJ) $(HEADER)
 
 test:
 	touch test.txt | echo -n "0123456789" > test.txt 
-	clang -Wall -Werror -Wextra -o test main.c libasm.a
+	gcc -Wall -Werror -Wextra -no-pie -o test main.c libasm.a
 
 clean:
 	${RM} ${OBJ}

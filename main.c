@@ -14,7 +14,7 @@
 
 int		main(void)
 {
-	char dest[100];
+	char dest[350];
 	printf("\n------------------------------------------------\n");
 	printf("| ft_strlen |\n");
 	printf("| ASM || C  |\n");
@@ -27,11 +27,11 @@ int		main(void)
 
 	printf("\n[ft_strcpy ASM]\n");
 	printf("%s\n", ft_strcpy(dest, "test"));
-	printf("%s\n", ft_strcpy(dest, "deuxiemetest"));
+	printf("%s\n", ft_strcpy(dest, ""));
 	printf("%s\n", ft_strcpy(dest, "et un petit troisieme"));
 	printf("\n[strcpy  C]\n");
 	printf("%s\n", strcpy(dest, "test"));
-	printf("%s\n", strcpy(dest, "deuxiemetest"));
+	printf("%s\n", strcpy(dest, ""));
 	printf("%s\n", strcpy(dest, "et un petit troisieme"));
 
 	printf("\n------------------------------------------------\n");
